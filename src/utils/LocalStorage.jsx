@@ -1,8 +1,15 @@
 const employees = [
   {
     id: 1,
+    firstName: "Amit",
     email: "employee1@example.com",
     password: "123",
+    taskSummary: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         title: "Design Login Page",
@@ -36,10 +43,18 @@ const employees = [
       }
     ]
   },
+
   {
     id: 2,
+    firstName: "Priya",
     email: "employee2@example.com",
     password: "123",
+    taskSummary: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         title: "Create Dashboard Layout",
@@ -73,10 +88,18 @@ const employees = [
       }
     ]
   },
+
   {
     id: 3,
+    firstName: "Rahul",
     email: "employee3@example.com",
     password: "123",
+    taskSummary: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         title: "Database Schema Design",
@@ -110,10 +133,18 @@ const employees = [
       }
     ]
   },
+
   {
     id: 4,
+    firstName: "Neha",
     email: "employee4@example.com",
     password: "123",
+    taskSummary: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         title: "Create Task Form",
@@ -147,10 +178,18 @@ const employees = [
       }
     ]
   },
+
   {
     id: 5,
+    firstName: "Suresh",
     email: "employee5@example.com",
     password: "123",
+    taskSummary: {
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1
+    },
     tasks: [
       {
         title: "Setup Redux Store",
