@@ -202,9 +202,9 @@ export const setLocalStorage=()=>{
    localStorage.setItem("employees",JSON.stringify(employees));//we just set our employyes array data to localstoarge by stringyfying that
    localStorage.setItem("admin",JSON.stringify(admin));//we just set our employyes array data to localstoarge by stringyfying that
 }
+
 export const getLocalStorage=()=>{
    const employees= JSON.parse(localStorage.getItem('employees'))
    const admin= JSON.parse(localStorage.getItem('admin'))
-   console.log(admin,employees)
-   
+   return {employees,admin}   
 }
