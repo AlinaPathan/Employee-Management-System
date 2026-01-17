@@ -10,7 +10,10 @@ const AcceptTask = () => {
    <h2 className='mt-5 text-2xl font-semibold text-white'>New Task id to make video.</h2>
 
 <p className='text-sm text-white mt-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea, molestias?</p>
-
+<div className='flex justify-between items-center mt-8 text-white'>
+    <button className='bg-green-500 py-1 px-2 text-sm rounded-lg'>Mark as completed</button>
+    <button className='bg-red-600 py-1 px-2 text-sm rounded-lg'>Mark as failed</button>
+</div>
    </div>    
 )
 }
