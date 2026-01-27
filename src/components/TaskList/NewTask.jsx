@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewTask = () => {
+const NewTask = ({idx}) => {
   return (
     
    <div className='bg-blue-500 rounded-xl w-[300px] h-full flex-shrink-0 p-5'>
