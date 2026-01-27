@@ -20,11 +20,11 @@ const TaskList = ({ loggedInUserData }) => {
         }
 
         if (task.completed) {
-          return <CompleteTask key={index} task={task} />
+          return <CompleteTask key={index} task={task}/>
         }
 
         if (task.failed) {
-          return <FailedTask key={index} task={task} />
+          return <FailedTask key={index} task={task}/>
         }
 
         return null

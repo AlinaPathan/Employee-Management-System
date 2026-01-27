@@ -1,6 +1,25 @@
 import React from 'react'
-
+import { useState } from 'react'
 const CreateTask = () => {
+ const [taskTitle, setTaskTitle] = useState('')
+ const [taskDescription, setTaskDescription] = useState('')
+ const [taskDate, setTaskDate] = useState('')
+ const [assignTo, setAssignTo] = useState('')
+ const [category, setCategory] = useState('')
+
+const [Task, setTask] = useState([])
+
+
+ const submitHandler=(e)=>{
+  e.preventDefault();
+  console.log("task Created")
+  setTask({taskTitle,taskDescription,taskDate,assignTo,category,active:false,newTask:true,failed:true,completed:false})
+  setTaskTitle("");
+  setTaskDescription("");
+  setAssignTo("");
+  setTaskDate("");
+  setCategory("");
+ } 
   return (
     
           <div className="mt-8 max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
@@ -8,7 +27,7 @@ const CreateTask = () => {
           Create New Task
         </h2>
 
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form  onSubmit={(e)=>{submitHandler(e)}}  className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
           {/* LEFT COLUMN */}
           <div className="flex flex-col gap-4">
@@ -18,6 +37,10 @@ const CreateTask = () => {
                 Task Title
               </label>
               <input
+               value={taskTitle}
+               onChange={(e)=>{
+                setTaskTitle(e.target.value)
+               }}
                 type="text"
                 placeholder="Enter task title"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -30,6 +53,10 @@ const CreateTask = () => {
                 Description
               </label>
               <textarea
+                  value={taskDescription}
+               onChange={(e)=>{
+                setTaskDescription(e.target.value)
+                }}
                 rows="6"
                 placeholder="Enter task description"
                 className="w-full px-4 py-2 border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -45,6 +72,10 @@ const CreateTask = () => {
                 Due Date
               </label>
               <input
+                  value={taskDate}
+               onChange={(e)=>{
+                setTaskDate(e.target.value)
+               }}
                 type="date"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -56,6 +87,10 @@ const CreateTask = () => {
                 Assign To
               </label>
               <input
+                  value={assignTo}
+               onChange={(e)=>{
+                setAssignTo(e.target.value)
+               }}
                 type="text"
                 placeholder="Employee name"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -68,6 +103,10 @@ const CreateTask = () => {
                 Category
               </label>
               <input
+                  value={category}
+               onChange={(e)=>{
+                setCategory(e.target.value)
+               }}
                 type="text"
                 placeholder="Design / Development / Testing"
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
