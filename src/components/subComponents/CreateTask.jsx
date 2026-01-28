@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 const CreateTask = () => {
- const [taskTitle, setTaskTitle] = useState('')
+ const [title, setTaskTitle] = useState('')
  const [taskDescription, setTaskDescription] = useState('')
  const [taskDate, setTaskDate] = useState('')
  const [assignTo, setAssignTo] = useState('')
@@ -11,26 +11,52 @@ const [newTask, setNewTask] = useState({})
 
 
  const submitHandler=(e)=>{
-  console.log("submit handler called")
   e.preventDefault();
-  console.log("task Created")
-  setNewTask({taskTitle,taskDescription,taskDate,assignTo,category,active:false,newTask:true,failed:true,completed:false})
-  console.log(newTask);
-  const data=JSON.parse(localStorage.getItem('employees'))||[]
-    console.log("EMPLOYEES LENGTH:", data.length);
-
-  data.forEach(function(elem){
-  if(assignTo==elem.firstName){
-  console.log(elem.tasks.length)
-   elem.tasks.push(newTask)
-   console.log(elem.tasks.length)
+  
+  if(!title || !taskDescription || !taskDate || !assignTo || !category){
+    alert('Please fill all fields')
+    return
   }
+  
+  const taskObject = {
+    title,
+    description: taskDescription,
+    taskDate,
+    category,
+    active: false,
+    newTask: true,
+    failed: false,
+    completed: false
+  }
+  
+  const data = JSON.parse(localStorage.getItem('employees')) || []
+  let taskAssigned = false
+  
+  data.forEach(function(elem){
+    if(assignTo === elem.firstName){
+      elem.tasks.push(taskObject)
+      elem.taskSummary.newTask = elem.taskSummary.newTask + 1
+      taskAssigned = true
+    }
   })
+  
+  if(!taskAssigned){
+    alert('Employee not found')
+    return
+  }
+  
+  localStorage.setItem('employees', JSON.stringify(data))
+  
+  // Trigger a custom event to notify other components
+  window.dispatchEvent(new Event('taskUpdated'))
+  
+  alert('Task created and assigned successfully!')
+  
   setAssignTo("")
   setCategory("")
-setTaskDate("")
-setTaskDescription("")
-setTaskTitle("")
+  setTaskDate("")
+  setTaskDescription("")
+  setTaskTitle("")
 } 
   return (
     
@@ -49,7 +75,7 @@ setTaskTitle("")
                 Task Title
               </label>
               <input
-               value={taskTitle}
+               value={title}
                onChange={(e)=>{
                 setTaskTitle(e.target.value)
                }}

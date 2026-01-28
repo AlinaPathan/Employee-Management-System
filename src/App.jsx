@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import Login from "./components/Auth/Login";
 import EmployeeDashboard from "./components/Dashboard/EmployeeDashboard";
 import AdminDashboard from "./components/Dashboard/AdminDashboard";
@@ -16,11 +16,26 @@ const App = () => {
 useEffect(() => {
   const loggedInUser = localStorage.getItem("loggedInUser");
   if (loggedInUser) {
-    const userData = JSON.parse(loggedInUser);
-    setUser(userData.role);
-    setLoggedInUserData(userData.data);
+    try {
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      if(userData.role === "employee") {
+        // Refresh employee data from localStorage to get updated tasks
+        const employees = JSON.parse(localStorage.getItem("employees")) || []
+        const updatedEmployee = employees.find(emp => emp.email === userData.data.email)
+        if(updatedEmployee) {
+          setLoggedInUserData(updatedEmployee);
+        } else {
+          setLoggedInUserData(userData.data);
+        }
+      } else {
+        setLoggedInUserData(userData.data);
+      }
+    } catch(e) {
+      console.log("Error parsing login data", e);
+    }
   }
-}, [authData]);
+}, []);
  
   const handleLogin = (email, password) => {
   if (email === "admin@example.com" && password === "123") {

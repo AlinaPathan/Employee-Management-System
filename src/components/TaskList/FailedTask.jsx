@@ -12,7 +12,7 @@ const FailedTask = ({task}) => {
 <p className='text-sm text-white mt-2'>{task.description}</p>
 
 <div className='mt-4'>
-    <button className='w-full text-md font-semibold text-white'>Failed!!!</button>
+    <button disabled className='w-full text-md font-semibold text-white bg-red-700 py-2 rounded'>✗ Failed</button>
 </div>
    </div>
   )

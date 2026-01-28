@@ -11,7 +11,7 @@ const CompleteTask = ({task}) => {
 
    <p className='text-sm text-white mt-2'>{task.description}</p>
 <div className='mt-4'>
-    <button className='w-full text-md font-semibold text-white'>Completed!!!</button>
+    <button disabled className='w-full text-md font-semibold text-white bg-green-700 py-2 rounded'>✓ Completed</button>
 </div>
    </div>
   )
