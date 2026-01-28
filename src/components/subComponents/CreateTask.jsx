@@ -7,19 +7,31 @@ const CreateTask = () => {
  const [assignTo, setAssignTo] = useState('')
  const [category, setCategory] = useState('')
 
-const [Task, setTask] = useState([])
+const [newTask, setNewTask] = useState({})
 
 
  const submitHandler=(e)=>{
+  console.log("submit handler called")
   e.preventDefault();
   console.log("task Created")
-  setTask({taskTitle,taskDescription,taskDate,assignTo,category,active:false,newTask:true,failed:true,completed:false})
-  setTaskTitle("");
-  setTaskDescription("");
-  setAssignTo("");
-  setTaskDate("");
-  setCategory("");
- } 
+  setNewTask({taskTitle,taskDescription,taskDate,assignTo,category,active:false,newTask:true,failed:true,completed:false})
+  console.log(newTask);
+  const data=JSON.parse(localStorage.getItem('employees'))||[]
+    console.log("EMPLOYEES LENGTH:", data.length);
+
+  data.forEach(function(elem){
+  if(assignTo==elem.firstName){
+  console.log(elem.tasks.length)
+   elem.tasks.push(newTask)
+   console.log(elem.tasks.length)
+  }
+  })
+  setAssignTo("")
+  setCategory("")
+setTaskDate("")
+setTaskDescription("")
+setTaskTitle("")
+} 
   return (
     
           <div className="mt-8 max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">

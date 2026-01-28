@@ -5,7 +5,7 @@ export const AuthContext=createContext()//global context any componant can acces
 
 
 const AuthProvider = ({children}) => {
-  localStorage.clear();
+  // localStorage.clear();
    const [userData, setUserData] = useState(null)
 
      useEffect(() => {
