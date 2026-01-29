@@ -1,5 +1,5 @@
 import React, { createContext ,useState ,useEffect } from 'react'
-import { getLocalStorage ,setLocalStorage } from '../utils/localStorage'
+import { getLocalStorage ,setLocalStorage } from '../utils/LocalStorage.jsx'
 
 export const AuthContext=createContext()//global context any componant can access the datawhat useeffect does explain
 
